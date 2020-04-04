@@ -1,0 +1,344 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DBC90EB9240AE476003C54BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC90EB8240AE476003C54BE /* AppDelegate.swift */; };
+		DBC90EBB240AE476003C54BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC90EBA240AE476003C54BE /* ContentView.swift */; };
+		DBC90EBD240AE477003C54BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC90EBC240AE477003C54BE /* Assets.xcassets */; };
+		DBC90EC3240AE477003C54BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC90EC1240AE477003C54BE /* Main.storyboard */; };
+		DBE2CE8E241D731B00CBD421 /* DisplayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2CE8C241D731B00CBD421 /* DisplayConfig.swift */; };
+		DBE2CE8F241D731B00CBD421 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2CE8D241D731B00CBD421 /* Window.swift */; };
+		DBE2CE91241E4DEF00CBD421 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2CE90241E4DEF00CBD421 /* Process.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DBC90EB5240AE476003C54BE /* StayPut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayPut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBC90EB8240AE476003C54BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DBC90EBA240AE476003C54BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DBC90EBC240AE477003C54BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DBC90EC2240AE477003C54BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DBC90EC4240AE477003C54BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBC90EC5240AE477003C54BE /* StayPut.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StayPut.entitlements; sourceTree = "<group>"; };
+		DBE2CE8C241D731B00CBD421 /* DisplayConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayConfig.swift; sourceTree = "<group>"; };
+		DBE2CE8D241D731B00CBD421 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		DBE2CE90241E4DEF00CBD421 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DBC90EB2240AE476003C54BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DBC90EAC240AE476003C54BE = {
+			isa = PBXGroup;
+			children = (
+				DBC90EB7240AE476003C54BE /* StayPut */,
+				DBC90EB6240AE476003C54BE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DBC90EB6240AE476003C54BE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DBC90EB5240AE476003C54BE /* StayPut.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DBC90EB7240AE476003C54BE /* StayPut */ = {
+			isa = PBXGroup;
+			children = (
+				DBC90EB8240AE476003C54BE /* AppDelegate.swift */,
+				DBE2CE8C241D731B00CBD421 /* DisplayConfig.swift */,
+				DBE2CE90241E4DEF00CBD421 /* Process.swift */,
+				DBE2CE8D241D731B00CBD421 /* Window.swift */,
+				DBC90EBA240AE476003C54BE /* ContentView.swift */,
+				DBC90EBC240AE477003C54BE /* Assets.xcassets */,
+				DBC90EC1240AE477003C54BE /* Main.storyboard */,
+				DBC90EC4240AE477003C54BE /* Info.plist */,
+				DBC90EC5240AE477003C54BE /* StayPut.entitlements */,
+			);
+			path = StayPut;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DBC90EB4240AE476003C54BE /* StayPut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBC90EC8240AE477003C54BE /* Build configuration list for PBXNativeTarget "StayPut" */;
+			buildPhases = (
+				DBC90EB1240AE476003C54BE /* Sources */,
+				DBC90EB2240AE476003C54BE /* Frameworks */,
+				DBC90EB3240AE476003C54BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StayPut;
+			productName = StayPut;
+			productReference = DBC90EB5240AE476003C54BE /* StayPut.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBC90EAD240AE476003C54BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Steve Wiley";
+				TargetAttributes = {
+					DBC90EB4240AE476003C54BE = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = DBC90EB0240AE476003C54BE /* Build configuration list for PBXProject "StayPut" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DBC90EAC240AE476003C54BE;
+			productRefGroup = DBC90EB6240AE476003C54BE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DBC90EB4240AE476003C54BE /* StayPut */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DBC90EB3240AE476003C54BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC90EC3240AE477003C54BE /* Main.storyboard in Resources */,
+				DBC90EBD240AE477003C54BE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DBC90EB1240AE476003C54BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBC90EBB240AE476003C54BE /* ContentView.swift in Sources */,
+				DBE2CE91241E4DEF00CBD421 /* Process.swift in Sources */,
+				DBE2CE8E241D731B00CBD421 /* DisplayConfig.swift in Sources */,
+				DBC90EB9240AE476003C54BE /* AppDelegate.swift in Sources */,
+				DBE2CE8F241D731B00CBD421 /* Window.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DBC90EC1240AE477003C54BE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBC90EC2240AE477003C54BE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DBC90EC6240AE477003C54BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DBC90EC7240AE477003C54BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		DBC90EC9240AE477003C54BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StayPut/StayPut.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StayPut/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiley.stayput;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DBC90ECA240AE477003C54BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = StayPut/StayPut.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = StayPut/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swiley.stayput;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DBC90EB0240AE476003C54BE /* Build configuration list for PBXProject "StayPut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC90EC6240AE477003C54BE /* Debug */,
+				DBC90EC7240AE477003C54BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBC90EC8240AE477003C54BE /* Build configuration list for PBXNativeTarget "StayPut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBC90EC9240AE477003C54BE /* Debug */,
+				DBC90ECA240AE477003C54BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DBC90EAD240AE476003C54BE /* Project object */;
+}
