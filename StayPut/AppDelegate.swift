@@ -17,6 +17,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem!
     var displayConfigs: [String: DisplayConfig] = [:]
     
+    fileprivate func registerCallbacks() {
+        let dnc = DistributedNotificationCenter.default()
+        
+        dnc.addObserver(
+            forName: .init("com.apple.screenIsLocked"),
+            object: nil,
+            queue: .main
+        ) {
+            notification in
+            self.onLocked(notification: notification)
+        }
+        
+        dnc.addObserver(
+            forName: .init("com.apple.screenIsUnlocked"),
+            object: nil,
+            queue: .main
+        ) {
+            notification in
+            self.onUnlocked(notification: notification)
+        }
+    }
+    
     func applicationWillFinishLaunching(_ notification: Notification) {
         os_log("entered appliationWillFinishLaunching()")
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
@@ -26,25 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             os_log("applicationWillFinishLaunching(): Access Not Enabled")
         }
         
-        let dnc = DistributedNotificationCenter.default()
-
-        dnc.addObserver(
-            forName: .init("com.apple.screenIsLocked"),
-            object: nil,
-            queue: .main
-        ) {
-            notification in
-            self.onLocked(notification: notification)
-        }
-
-        dnc.addObserver(
-            forName: .init("com.apple.screenIsUnlocked"),
-            object: nil,
-            queue: .main
-        ) {
-            notification in
-            self.onUnlocked(notification: notification)
-        }
+        registerCallbacks()
 
         os_log("exited applicationWillFinishLaunching()")
     }
@@ -85,7 +89,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
        
     func constructMenu() {
         let menu = NSMenu()
-                
+        menu.addItem(NSMenuItem(title: "Snapshot", action: #selector(snapshot), keyEquivalent: "s"))
+        menu.addItem(NSMenuItem(title: "Restore", action: #selector(restore), keyEquivalent: "r"))
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         
@@ -124,31 +129,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return ret
     }
 
-    func onUnlocked(notification: Notification) {
-        os_log("entered onUnlocked() with %{public}s", notification.name.rawValue)
+    @objc func restore() {
+        os_log("entered restore()")
         
         let displays = getActiveDisplays()
         let key = DisplayConfig.makeKey(displays: displays)
         
         if displayConfigs[key] != nil {
-            os_log("onUnlocked(): Found matching display configuation, moving windows")
+            os_log("restore(): Found matching display configuration, moving windows")
             let displayConfig = displayConfigs[key]
             for process in (displayConfig?.processes)! {
                 process.repositionWindows()
             }
         } else {
-            os_log("onUnlocked(): No matching display configuration found")
+            os_log("restore(): No matching display configuration found")
         }
-        os_log("exited onUnlocked()")
+        os_log("exited restore()")
+    }
+    
+    @objc func onUnlocked(notification: Notification) {
+        os_log("entered onUnlocked(notification) with %{public}s", notification.name.rawValue)
+        restore()
+        os_log("exited onUnlocked(notification)")
+    }
+
+    @objc func snapshot() {
+        let displays = getActiveDisplays()
+        let key = DisplayConfig.makeKey(displays: displays)
+
+        displayConfigs[key] = DisplayConfig(displays: displays, processes: Process.getProcesses())
     }
 
     func onLocked(notification: Notification) {
         os_log("entered onLocked() with %{public}s", notification.name.rawValue)
-        
-        let displays = getActiveDisplays()
-        let key = DisplayConfig.makeKey(displays: displays)
-        
-        displayConfigs[key] = DisplayConfig(displays: displays, processes: Process.getProcesses())
+        snapshot()
         os_log("exited onLocked()")
     }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import os
 
+
 class Window {
     var title: String
     var bounds: CGSize
@@ -94,17 +95,47 @@ class Window {
         
         return ret
     }
+
+
+    private static let gmailTitle = "inbox ("
+    private class func isGmailInbox(_ to: String, _ title: String) -> Bool {
+        to.prefix(gmailTitle.count) == title.prefix(gmailTitle.count)
+    }
+
+    private class func isSlackWindow(_ to: String, _ title: String) -> Bool {
+        to.replacingOccurrences(of: "*", with: "") == title.replacingOccurrences(of: "*", with: "")
+    }
+
+    typealias CallbackForTitle = (Window?) -> Void
+
+    class func forMatching(to: String, savedWindows: [String:Window], selector:CallbackForTitle) {
+        let to = to.lowercased()
+        for key in savedWindows.keys {
+            let lcTitle = key.lowercased()
+            if to == lcTitle || isGmailInbox(to, lcTitle) || isSlackWindow(to, lcTitle) {
+                os_log("Window.reposition(): moving window '%{public}s'", key)
+                selector(savedWindows[key])
+                return
+            }
+        }
+        os_log("Window.reposition(): window '%{public}s' not found", to)
+    }
+
         
     class func reposition(allFor pid: Int32, using savedWindows: [String:Window]) {
         let foundWindows = Window.getWindowList(AXUIElementCreateApplication(pid))
         for window in foundWindows {
-            let title = Window.getTitleAttribute(window)
-            if savedWindows[title] != nil {
-                Window.setOriginAttribute(of: window, toThatOf: savedWindows[title]!)
-                Window.setSizeAttribute(of: window, toThatOf: savedWindows[title]!)
-            } else {
-                os_log("Window.reposition(): unfound window: %{public}s", title)
-            }
+            Window.forMatching(to: Window.getTitleAttribute(window), savedWindows: savedWindows, selector: {(savedWindow) in
+                Window.setOriginAttribute(of: window, toThatOf: savedWindow!)
+                Window.setSizeAttribute(of: window, toThatOf: savedWindow!)
+            })
+//            let title = Window.getTitleAttribute(window)
+//            if savedWindows[title] != nil {
+//                Window.setOriginAttribute(of: window, toThatOf: savedWindows[title]!)
+//                Window.setSizeAttribute(of: window, toThatOf: savedWindows[title]!)
+//            } else {
+//                os_log("Window.reposition(): unfound window: %{public}s", title)
+//            }
         }
     }
 }
