@@ -146,10 +146,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         os_log("exited restore()")
     }
+
+    @objc func run_scripts() {
+        os_log("entering run_scripts()")
+
+        let scriptFolderURL = try! FileManager.default.url(for: .applicationScriptsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        do {
+            let scripts = try FileManager.default.contentsOfDirectory(at: scriptFolderURL, includingPropertiesForKeys: [URLResourceKey.isExecutableKey], options: FileManager.DirectoryEnumerationOptions.skipsSubdirectoryDescendants)
+            for script in scripts {
+                os_log("Running %{public}s", script.absoluteString)
+                let task = try NSUserUnixTask(url: script)
+                task.execute()
+            }
+        } catch let error {
+            os_log("Error attempting to run scripts %{public}s", error.localizedDescription)
+        }
+    }
     
     @objc func onUnlocked(notification: Notification) {
         os_log("entered onUnlocked(notification) with %{public}s", notification.name.rawValue)
         restore()
+        run_scripts()
         os_log("exited onUnlocked(notification)")
     }
 
