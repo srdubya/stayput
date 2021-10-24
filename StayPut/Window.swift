@@ -112,8 +112,18 @@ class Window {
         let to = to.lowercased()
         for key in savedWindows.keys {
             let lcTitle = key.lowercased()
-            if to == lcTitle || isGmailInbox(to, lcTitle) || isSlackWindow(to, lcTitle) {
-                os_log("Window.reposition(): moving window '%{public}s'", key)
+            if to == lcTitle {
+                os_log("Window.reposition() - title match: moving window '%{public}s'", key)
+                selector(savedWindows[key])
+                return
+            }
+            if isGmailInbox(to, lcTitle) {
+                os_log("Window.reposition() - gmail inbox: moving window '%{public}s'", key)
+                selector(savedWindows[key])
+                return
+            }
+            if isSlackWindow(to, lcTitle) {
+                os_log("Window.reposition() - slack window: moving window '%{public}s'", key)
                 selector(savedWindows[key])
                 return
             }

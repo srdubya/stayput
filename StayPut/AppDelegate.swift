@@ -136,13 +136,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let key = DisplayConfig.makeKey(displays: displays)
         
         if displayConfigs[key] != nil {
-            os_log("restore(): Found matching display configuration, moving windows")
+            os_log("restore(): Found matching display configuration '%{public}s', moving windows", key)
             let displayConfig = displayConfigs[key]
             for process in (displayConfig?.processes)! {
                 process.repositionWindows()
             }
         } else {
-            os_log("restore(): No matching display configuration found")
+            os_log("restore(): No matching display configuration found for '%{public}s'", key)
         }
         os_log("exited restore()")
     }
@@ -173,6 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func snapshot() {
         let displays = getActiveDisplays()
         let key = DisplayConfig.makeKey(displays: displays)
+        os_log("snapshot(): Storing windows for '%{public}s'", key)
 
         displayConfigs[key] = DisplayConfig(displays: displays, processes: Process.getProcesses())
     }

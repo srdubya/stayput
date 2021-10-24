@@ -8,3 +8,6 @@ make
 
 ## Running Scripts
 `StayPut` will run any executable script in `${HOME}/Library/Application Scripts/com.swiley.stayput` upon every wake up.
+
+## Debugging
+Run `Applications/Utilities/Console` filtering for messages from the `StayPut` process.
