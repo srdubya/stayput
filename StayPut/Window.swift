@@ -31,9 +31,12 @@ class Window {
     }
     
     fileprivate class func getOriginAttribute(_ window: AXUIElement) -> CGPoint {
-        let tmp = getAXValue(window, attributeName: kAXPositionAttribute)!
+        let tmp = getAXValue(window, attributeName: kAXPositionAttribute)
         var point = CGPoint()
-        AXValueGetValue(tmp, .cgPoint, &point)
+        if tmp == nil {
+            return point
+        }
+        AXValueGetValue(tmp!, .cgPoint, &point)
         return point
     }
     
@@ -49,13 +52,19 @@ class Window {
     fileprivate class func getAXValue(_ window: AXUIElement, attributeName atName: String) -> AXValue? {
         var tmp: AnyObject?
         AXUIElementCopyAttributeValue(window, atName as CFString, &tmp)
+        if tmp == nil {
+            return nil
+        }
         return (tmp as! AXValue)
     }
     
     fileprivate class func getSizeAttribute(_ window: AXUIElement) -> CGSize {
-        let tmp = getAXValue(window, attributeName: kAXSizeAttribute)!
+        let tmp = getAXValue(window, attributeName: kAXSizeAttribute)
         var size = CGSize()
-        AXValueGetValue(tmp, .cgSize, &size)
+        if tmp == nil {
+            return size
+        }
+        AXValueGetValue(tmp!, .cgSize, &size)
         return size
     }
     
@@ -80,18 +89,26 @@ class Window {
 
     class func getWindows(pid: Int32) -> [Window] {
         let appRef = AXUIElementCreateApplication(pid)
-
+        
         var ret = [Window]()
         for window in getWindowList(appRef) {
             let windowTitle = getTitleAttribute(window)
-            let bounds = getSizeAttribute(window)
-            let origin = getOriginAttribute(window)
             if windowTitle.count == 0 {
                 os_log("Window.getWindows(%{public}d), error getting window title", pid)
-            } else {
-                os_log("Window.getWindows(%{public}d), saving %{public}s", pid, windowTitle)
-                ret.append(Window(windowTitle, bounds, origin))
+                continue
             }
+            let bounds = getSizeAttribute(window)
+            if bounds.height.isNaN || bounds.width.isNaN {
+                os_log("Window.getWindows(%{public}d), error getting size of `%{public}s`", pid, windowTitle)
+                continue
+            }
+            let origin = getOriginAttribute(window)
+            if origin.x.isNaN || origin.y.isNaN {
+                os_log("Window.getWindows(%{public}d), error getting origin of `%{public}s`", pid, windowTitle)
+                continue
+            }
+            os_log("Window.getWindows(%{public}d), saving %{public}s", pid, windowTitle)
+            ret.append(Window(windowTitle, bounds, origin))
         }
         
         return ret
