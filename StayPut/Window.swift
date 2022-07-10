@@ -51,8 +51,8 @@ class Window {
     
     fileprivate class func getAXValue(_ window: AXUIElement, attributeName atName: String) -> AXValue? {
         var tmp: AnyObject?
-        AXUIElementCopyAttributeValue(window, atName as CFString, &tmp)
-        if tmp == nil {
+        let retValue = AXUIElementCopyAttributeValue(window, atName as CFString, &tmp)
+        if retValue != AXError.success || tmp == nil {
             return nil
         }
         return (tmp as! AXValue)
