@@ -102,12 +102,16 @@ class Window {
                 os_log("Window.getWindows(%{public}d), error getting size of `%{public}s`", pid, windowTitle)
                 continue
             }
+            if bounds.height < 1.0 || bounds.width < 1.0 {
+                os_log("Windows.getWindows(%{public}d), `%{public}s` questionable bounds:  %{public}f,%{public}f", pid, windowTitle, bounds.width, bounds.height)
+                continue
+            }
             let origin = getOriginAttribute(window)
             if origin.x.isNaN || origin.y.isNaN {
                 os_log("Window.getWindows(%{public}d), error getting origin of `%{public}s`", pid, windowTitle)
                 continue
             }
-            os_log("Window.getWindows(%{public}d), saving %{public}s", pid, windowTitle)
+            os_log("Window.getWindows(%{public}d), saving `%{public}s`", pid, windowTitle)
             ret.append(Window(windowTitle, bounds, origin))
         }
         

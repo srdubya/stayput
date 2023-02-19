@@ -8,6 +8,7 @@
 
 import Foundation
 import os
+import SwiftUI
 
 class Process {
     var pid: Int32

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class DisplayConfig {
     var displayNums: [CGDirectDisplayID]
